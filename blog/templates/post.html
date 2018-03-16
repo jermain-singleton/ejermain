@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <p>Post: {{ post }}</p>
+ 
+  <p>Entries:</p>
+  <p>
+        <a href="{% url 'new_entry' post.id %}">Add a new entry:</a>
+  </p>
+  <ul>
+  {%for entry in entries %}
+    <li>{{ post }}
+      <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+      <p>{{ entry.text|linebreaks }}</p>
+      <p>
+        <a href="{% url 'edit_entry' entry.id %}">edit entry</a>
+      </p>
+    </li>
+  {% empty %}
+    <li>
+      No entries available for posts.
+    </li>
+  {%  endfor %}
+  </ul>
+
+  <a href="{% url 'new_post' %}">Add a new post:</a>
+
+{% endblock content %}
