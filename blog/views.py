@@ -9,10 +9,11 @@ from django.contrib.auth.decorators import login_required
 from .models import Post, Entry
 from .forms import PostForm, EntryForm
 
-@login_required
+# @login_required
 def posts(request):
     """Show all posts"""
-    posts = Post.objects.filter(owner=request.user).order_by('date_added')
+    # posts = Post.objects.filter(owner=request.user).order_by('date_added')
+    posts = Post.objects.order_by('date_added')
     context = {'posts': posts}
     return render(request, 'posts.html', context)
 
@@ -21,8 +22,8 @@ def post(request, post_id):
     """Show a single post and all its entries"""
     post = Post.objects.get(id=post_id)
     # Make sure the posts belongs to the current user
-    if post.owner != request.user:
-        raise Http404
+    #if post.owner != request.user:
+        #raise Http404
         
     entries = post.entry_set.order_by('-date_added')
     context = {'post': post, 'entries': entries}
@@ -41,7 +42,7 @@ def new_post(request):
             new_post = form.save(commit=False)
             new_post.owner = request.user
             new_post.save()
-            return HttpResponseRedirect(reverse('post'))
+            return HttpResponseRedirect(reverse('posts'))
     context = {'form': form}
     return render(request, 'new_post.html', context)
 

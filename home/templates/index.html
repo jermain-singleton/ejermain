@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
+<link rel="stylesheet" href="style.css">
 {% block content %}
 <h1 align="center">Jermain Singleton<br />
 <small>Python Backend Web Developer</small></h1>
-<p>Text Here</p>
+<h2 align="center"><font color="blue">
+This Blog is for Web Developing with Python/Django</font></h2>
+<p align="center">This is the first app I have developed as a aspiring web developer.<br>
+   The site is a simple blog app that I will post to from time to time<br>
+   with updates on my studies are going, what I learned and what I am<br>
+   currently learning. Right now I am styudying HTML, CSS, Javascript, Postgresql<br>
+   Python and Django.  Please join my blog and post a topic.  
+</p>
+<br>
+<p align="center">
+        <img src="{% static "images/python-django-logo.jpg" %}" alt="Python Django Logo" 
+        style="width:500px;height:300px;border:0;"></p>
+
 {% endblock content%}
