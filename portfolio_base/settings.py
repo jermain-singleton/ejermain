@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'portfolio_base.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ejermain',
+        'USER': 'jsingleton',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432', 
     }
 }
 
@@ -128,7 +132,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # added path to my static folder
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+STATIC_ROOT = "/home/jsingleton/ejermain/ejermain/static/"
 
 # My settings
 LOGIN_URL = 'login'
